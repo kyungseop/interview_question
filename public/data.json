@@ -1,0 +1,67 @@
+[
+  {
+    "category": "JAVA",
+    "contents": [
+      {
+        "no": 1,
+        "quiz": "다형성에 대해서 설명 하여라",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "다형성에 대해서 설명 하여라",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "가상함수, Overriding 차이",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "소멸자에 virtual을 쓰는 이유는 무엇인가?",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "Volatile 키워드에 대해서 설명하여라",
+        "answer": "요거랍니다."
+      }
+    ]
+  },
+  {
+    "category": "DB",
+    "contents": [
+      {
+        "no": 1,
+        "quiz": "DB 란?",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "DB에서 index란?",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "NoSQL 기본 개념",
+        "answer": "요거랍니다."
+      }
+    ]
+  },
+  {
+    "category": "알고리즘",
+    "contents": [
+      {
+        "no": 1,
+        "quiz": "B-tree 란?",
+        "answer": "요거랍니다."
+      },
+      {
+        "no": 1,
+        "quiz": "Backtracking 이란?",
+        "answer": "요거랍니다."
+      }
+    ]
+  }
+]
