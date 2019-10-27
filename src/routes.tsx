@@ -1,10 +1,10 @@
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 
 const home = [
     {
         exact: true,
         path: '/',
-        component: Home
+        component: HomePage
     },
 ];
 

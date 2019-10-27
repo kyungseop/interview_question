@@ -12,7 +12,7 @@ export const DefaultCardContents = ( { children } ) => (
                 flexDirection: 'column'
             }}
         >
-            <img alt={"Demo Image"}
+            <img alt={"front"}
                  src={Rick}
                  style={{ maxWidth: '100%', maxHeight: '100%' }}
             />
