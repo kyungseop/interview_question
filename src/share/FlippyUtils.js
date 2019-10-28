@@ -4,12 +4,13 @@ import {DefaultCardContents} from "../components/DefaultCardContents";
 import {TextCardContents} from "../components/TextCardContents";
 
 const FlippyStyle = {
+    marginTop: '2px',
     width: '200px',
     height: '300px',
     textAlign: 'center',
     color: '#FFF',
     fontFamily: 'sans-serif',
-    fontSize: '30px',
+    fontSize: '20px',
     justifyContent: 'center'
 };
 
@@ -35,7 +36,7 @@ export const FlippyOnClick = ( { front, back, flipDirection = 'vertical' } ) => 
         <TextCardContents
             front={front}
             back={back}
-            bottom={flipDirection}
+            bottom={''}
         >
         </TextCardContents>
     </Flippy>

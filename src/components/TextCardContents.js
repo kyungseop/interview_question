@@ -1,6 +1,7 @@
 import React from "react";
 import {BackSide, FrontSide} from "react-flippy";
 
+//TODO rate 를 bottom 에 추가
 export const TextCardContents = ( { front, back, bottom } ) => (
     <React.Fragment>
         <FrontSide
@@ -20,7 +21,6 @@ export const TextCardContents = ( { front, back, bottom } ) => (
                     width: '100%'
                 }}>
         {bottom}<br/>
-        (FRONT SIDE)
       </span>
         </FrontSide>
         <BackSide
@@ -41,7 +41,6 @@ export const TextCardContents = ( { front, back, bottom } ) => (
                     width: '100%'
                 }}>
         {bottom}<br/>
-        (BACK SIDE)
       </span>
         </BackSide>
     </React.Fragment> );

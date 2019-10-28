@@ -1,12 +1,12 @@
 import React from 'react';
 import { match } from 'react-router';
 import Select from '@atlaskit/select';
-import CodeIcon from '@atlaskit/icon/glyph/code';
 import MediaServicesBlurIcon from '@atlaskit/icon/glyph/media-services/blur';
-import { FlippyOnClick } from "../share/FlippyUtils";
-import { Control, Nav, NavButton, NavSection, RightNavButtonContainer } from '../styled';
+import LinkIcon from '@atlaskit/icon/glyph/link';
+import Button from '@atlaskit/button';
 import Page from "@atlaskit/page/Page";
-import { Grid, GridColumn } from "@atlaskit/page";
+import { FlippyOnClick } from "../share/FlippyUtils";
+import { Control, Nav, NavSection, RightNavButtonContainer } from '../styled';
 
 
 export type NavigationProps = {
@@ -16,9 +16,6 @@ export type NavigationProps = {
 };
 
 class Navigation extends React.Component<NavigationProps> {
-    onCodeToggle = () => {
-        //TODO link to github repository
-    };
 
     render() {
         const {
@@ -39,12 +36,12 @@ class Navigation extends React.Component<NavigationProps> {
                 </NavSection>
                 <NavSection>
                     <RightNavButtonContainer>
-                        <NavButton
-                            isSelected={ true }
-                            onClick={ this.onCodeToggle }
-                        >
-                            <CodeIcon label="Show source"/>
-                        </NavButton>
+                        <Button
+                            appearance="subtle"
+                            iconBefore={ <LinkIcon label="Link Icon"/> }
+                            href={ 'https://github.com/kyungseop/interview_question' }
+                            target="_blank"
+                        />
                     </RightNavButtonContainer>
                 </NavSection>
             </Nav>
@@ -54,20 +51,24 @@ class Navigation extends React.Component<NavigationProps> {
 
 const options = [
     { label: '없음', value: 'none' },
-    { label: 'JAVA', value: 'JAVA' },
-    { label: 'DB', value: 'DB' },
-    { label: '알고리즘', value: '알고리즘' }
+    { label: 'JAVA', value: 'java' },
+    { label: 'DB', value: 'db' },
+    { label: 'OS', value: 'os' },
+    { label: '알고리즘', value: 'algorithm' },
+    { label: '자료구조', value: 'data_structure' },
+    { label: '디자인패턴', value: 'design_pattern' },
+    { label: '프레임워크', value: 'framework' },
+    { label: '네트워크', value: 'network' },
+    { label: '컴퓨터', value: 'cs' },
+    { label: '웹', value: 'web' },
+    { label: 'React', value: 'react' },
+    { label: '클라우드', value: 'cloud' },
+    { label: '기타', value: 'etc' },
 ];
 
 export type Contents = {
-    no: number;
     quiz: string;
     answer: string;
-};
-
-export type Data = {
-    category: string;
-    contents: Array<Contents>;
 };
 
 export type Props = {
@@ -75,8 +76,7 @@ export type Props = {
 };
 export type State = {
     value: string;
-    data: Array<Data>;
-    filtered: Array<Contents>;
+    data: Array<Contents>;
     isFlipped: boolean;
 };
 
@@ -121,16 +121,7 @@ export default class HomePage extends React.Component<Props, State> {
     state: State = {
         value: 'none',
         data: [],
-        filtered: [],
         isFlipped: false
-    };
-
-    componentDidMount() {
-        fetch("/data.json")
-            .then(r => r.json())
-            .then(data => {
-                this.setState({ data: data });
-            });
     };
 
     onCategorySelected = (selected: { value: string }) => {
@@ -138,18 +129,13 @@ export default class HomePage extends React.Component<Props, State> {
     };
 
     updateSelected(value: string) {
-        let filtered = this.state.data.filter((dt: Data) => {
-            return dt.category === value
+        fetch(`/data/${value}.json`)
+            .then(r => r.json())
+            .then(data => {
+                this.setState({ value: value, data: data });
+            }).catch(res => {
+            this.setState({ value: value, data: [] });
         });
-
-        let contents: Array<Contents> = [];
-
-        filtered.map(c =>
-            c.contents.forEach((content: Contents) => {
-                contents.push(content);
-            }));
-
-        this.setState({ value: value, filtered: contents });
     }
 
     render() {
@@ -162,23 +148,21 @@ export default class HomePage extends React.Component<Props, State> {
                             onCategorySelected={ this.onCategorySelected }
                 />
                 <h2>암기카드</h2>
-                <Grid layout="fluid" spacing="comfortable">
-                    <div
-                        style={ {
-                            display: 'flex',
-                            flex: '1 0 200px',
-                            justifyContent: 'space-around',
-                            'flexWrap': 'wrap'
-                        } }>
-                        { this.state.filtered.map(test => (
-                            <GridColumn key={ key++ } medium={ 2 }>
-                                <FlippyOnClick key={ key++ }
-                                               front={ test.quiz }
-                                               back={ test.answer }
-                                               flipDirection="horizontal"/></GridColumn>))
-                        }
-                    </div>
-                </Grid>
+                <div
+                    style={ {
+                        display: 'flex',
+                        flex: '1 0 200px',
+                        justifyContent: 'space-around',
+                        'flexWrap': 'wrap'
+                    } }>
+                    { this.state.data.map(test => (
+
+                        <FlippyOnClick key={ key++ }
+                                       front={ test.quiz }
+                                       back={ test.answer }
+                                       flipDirection="horizontal"/>))
+                    }
+                </div>
             </Page>
         );
     }
