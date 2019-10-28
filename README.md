@@ -1,17 +1,13 @@
-## Memory Card
+# Interview Question Memory Card 
 
-### 추가할 기능 목록
-- 카드 섞기
-- 난이도 설정
-- 암기한 정도
-- 필터기능 강화
-  - 텍스트 검색
-  - 체크한 것만 보기
-- 반응형
-- 카드에 카테고리항목 추가 (JAVA, DB..)
-- 카드에 상세내용 참고 링크 추가 (정리가 잘 되어있는 블로그 링크)
-- 공유하기 기능
-- 그룹선택 기능 (암기노트 생성)
-- 정리한 내용으로 채점하기 (객관식 먼저.. 추후 주관식 - 빈칸넣기)
+## How to build
+For build, npm must be installed first. 
+ 1. clone https://github.com/kyungseop/interview_question.git
+ 2. npm install
+ 3. npm run build 
 
+## Guides
+- [Home Page](https://kyunsgeop.netlify.com)
 
+## License
+Licensed under the Apache License, Version 2.0
